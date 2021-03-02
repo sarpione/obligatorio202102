@@ -1,0 +1,36 @@
+---
+# Este playbook instala Apache
+
+- name: Instalar Httpd
+  yum:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+   - httpd
+  when: ansible_os_family == "RedHat"
+  notify: Reinicia Apache
+
+
+- name: Instalar Apache
+  apt:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+   - apache2
+  when: ansible_os_family == "Debian"
+  notify: Reinicia Apache
+
+- name: http service state
+  service:
+    name: httpd
+    state: started
+    enabled: yes
+  when: ansible_os_family == "RedHat"
+
+- name: http service state
+  service:
+    name: apache2
+    state: started
+    enabled: yes
+  when: ansible_os_family == "Debian"
+

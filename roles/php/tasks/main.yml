@@ -1,0 +1,19 @@
+---
+# Este playbook instala PHP
+
+
+- name: Instalar php en centos
+  yum:
+    name: "{{ item }}"
+    state: latest
+  when: ansible_os_family == "RedHat"
+  with_items:
+   - php
+
+- name: Instalar php en ubuntu
+  apt:
+    name: "{{ item }}"
+    state: latest
+  when: ansible_os_family == "Debian"
+  with_items:
+   - php 

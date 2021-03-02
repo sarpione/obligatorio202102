@@ -1,0 +1,25 @@
+---
+# Este playbook instala MariaDB
+
+- name: Instala MariaDB
+  yum:
+    name: "{{ item }}"
+    state: latest
+  when: ansible_os_family == "RedHat"
+  with_items:
+   - mariadb
+
+- name: Instala MariaDB
+  apt:
+    name: "{{ item }}"
+    state: latest
+  when: ansible_os_family == "Debian"
+  with_items:
+   - mariadb-server
+  notify: Reiniciar MariaDB
+
+
+- name: Habilita SELinux
+  selinux:
+    policy: targeted
+    state: enforcing

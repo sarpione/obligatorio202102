@@ -1,0 +1,7 @@
+---
+# Handler para reiniciar MariaDB
+
+- name: Reiniciar MariaDB
+  service:
+    name: mariadb
+    state: restarted

@@ -1,0 +1,11 @@
+---
+# Este playbook instala LAMP 
+
+- name: Instala LAMP
+  hosts: all
+  remote_user: ansible
+  become: yes
+  roles:
+    - web
+    - php
+    - db

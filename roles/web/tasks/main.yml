@@ -1,0 +1,3 @@
+---
+- include: instalar_httpd.yml
+- include: copia_archivo_index.yml

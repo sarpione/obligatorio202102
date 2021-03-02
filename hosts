@@ -1,0 +1,4 @@
+[all]
+ObliUbuntu ansible_host=192.168.64.136
+ObliCentos ansible_host=192.168.64.135
+

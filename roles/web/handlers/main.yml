@@ -1,0 +1,16 @@
+---
+# Reinicia el servicio de apache
+
+- name: Reinicia Apache
+  service:
+    name: httpd
+    when: ansible_os_family == "RedHat"
+    state: restarted
+    enabled: yes
+
+- name: Reinicia Apache
+  service:
+    name: apache2
+    when: ansible_os_family == "Debian"
+    state: restarted
+    enabled: yes
